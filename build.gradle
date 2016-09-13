@@ -1,0 +1,90 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'ru.shadam.gretty:gretty:+'
+  }
+}
+
+repositories {
+  jcenter()
+  mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jacoco'
+apply plugin : 'eclipse'
+apply plugin: 'org.akhikhl.gretty'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java']
+		}
+		resources {
+			srcDirs = ['src/main/resources']
+		}
+	}
+	test {
+		java {
+			srcDirs = ['src/test/java']
+		}
+	}
+}
+
+dependencies {
+	// provided
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+	
+	// test
+	testCompile 'junit:junit:4.8.2'
+	testCompile 'org.mockito:mockito-all:1.9.5'
+	
+	// logging
+	compile 'org.slf4j:slf4j-api:1.7.6'
+	compile 'ch.qos.logback:logback-core:1.1.1'
+	compile 'ch.qos.logback:logback-classic:1.1.1'
+	compile 'org.perf4j:perf4j:0.9.16'
+	
+	// libs
+	compile 'com.google.inject:guice:4.1.0'
+	compile 'com.google.inject.extensions:guice-servlet:4.1.0'
+	compile 'com.google.code.gson:gson:2.7'
+	compile 'org.jboss.resteasy:resteasy-guice:3.0.19.Final'
+	compile 'org.jboss.resteasy:resteasy-jackson2-provider:3.0.19.Final'
+	compile 'org.jboss.resteasy:resteasy-validator-provider-11:3.0.19.Final'
+	compile 'redis.clients:jedis:2.9.0'
+	compile 'org.mongodb:mongo-java-driver:3.3.0'
+}
+
+test {
+	jacoco {
+		excludes += ['**/FileRepositoryUtil.class',
+			'**/Redis.class',
+			'**/domain/*.class',
+			'**/exception/*.class',
+			'**/module/*.class']
+	}
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
+
+gretty {
+	port = 9000
+	contextPath = '/'
+	debugPort = 5005
+	debugSuspend = false
+	jvmArg "-Dvrc.mode.impl.properties=FILE"
+}

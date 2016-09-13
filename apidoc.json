@@ -1,0 +1,12 @@
+{
+  "name": "vrc",
+  "version": "0.0.1",
+  "description": "Property API - see, list and add properties through this service",
+  "title": "VRC - Property AI",
+  "url" : "http://localhost:9000/vrc",
+  "order" : [
+  	"CreateProperty",
+  	"GetPropertyById",
+  	"GetProperties"
+  ]
+}
