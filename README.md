@@ -28,7 +28,7 @@ Teste rápido? Acesse:
 
 ## Quer mais?
 
-Vamos lá! As API's GET são "cacheáveis". Então, a primeira requisição, pode "demorar" um pouco mais que a segunda. É tudo cacheado no Redis, se falhar qualquer operação nele ou não for configurado, a vida segue normalmente.
+Vamos lá! As API's GET são "cacheáveis" (se o Redis for configurado). Então, a primeira requisição, pode "demorar" um pouco mais que a segunda vez (a mesma requisição por id ou por área). É tudo cacheado no Redis, se falhar qualquer operação nele ou não for configurado, a vida segue normalmente.
 
 Você pode rodar o projeto utilizando o MongDB também.
 
@@ -61,7 +61,7 @@ Para acessar o redis, utilize: `redis-cli -h $(docker-machine ip default)`.
 
 - Iniciar container
 ```sh
-$ docker pull sameersbn/mongodb:latest
+$ docker pull mvertes/alpine-mongo:latest
 $ docker run -d --name mongo -p 27017:27017 mvertes/alpine-mongo
 $ export GRADLE_MONGODB_HOST=$(docker-machine ip default)
 ```
@@ -93,11 +93,13 @@ $ gradle jettyRun
 
 #### Colocando info no MongoDB
 
-Após subir a app, rode:
+Após subir a app, em outro terminal, rode:
 
 ```sh
 $ ./util/init_mongo_properties.sh
 ```
+
+> Pode demorar uns 2 minutos pra rodar tudo (são 8000 propriedades criadas sequencialmente).
 
 #### Faça algumas consultas
 
