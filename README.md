@@ -21,6 +21,11 @@ $ gradle jettyRun
 
 Para ver a documentação da API, olhe em [http://localhost:9000/doc/](http://localhost:9000/doc/).
 
+Teste rápido? Acesse:
+
+- [http://localhost:9000/vrc/v1/properties?ax=357&ay=536&bx=359&by=505](http://localhost:9000/vrc/v1/properties?ax=357&ay=536&bx=359&by=505)
+- [http://localhost:9000/vrc/v1/properties/5398](http://localhost:9000/vrc/v1/properties/5398)
+
 ## Quer mais?
 
 Vamos lá! As API's GET são "cacheáveis". Então, a primeira requisição, pode "demorar" um pouco mais que a segunda. É tudo cacheado no Redis, se falhar qualquer operação nele ou não for configurado, a vida segue normalmente.
