@@ -2,6 +2,8 @@
 
 Repositório contém a implementação do desafio backend de fazer uma [api que busca properties de Spotippos][challenge].
 
+> Para importar o projeto no eclipse rode: `gradle eclipse` e importe como um projeto normal.
+
 ##### Tecnologias utilizadas:
 
   - java (guice + resteasy)
