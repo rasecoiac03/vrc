@@ -63,7 +63,22 @@ $ export GRADLE_MONGODB_HOST=$(docker-machine ip default)
 
 - Configurar app para utilizar esse mongodb, adicionando/atualizando `jvmArg "-Dvrc.mongodb.host=$System.env.GRADLE_MONGODB_HOST"` nas confs do gretty (dentro do arquivo build.gradle).
 
-Para acessar o redis, utilize: `mongo --host $(docker-machine ip default)`.
+Para acessar o mongodb, utilize: `mongo --host $(docker-machine ip default)`.
+
+#### Como as confs ficaram
+
+```javascript
+gretty {
+	port = 9000
+	contextPath = '/'
+	debugPort = 5005
+	debugSuspend = false
+	jvmArg "-Dvrc.mode.impl.properties=MONGODB"
+	jvmArg "-Dvrc.cache.master.server=$System.env.GRADLE_CACHE_HOST"
+	jvmArg "-Dvrc.cache.slave.servers=$System.env.GRADLE_CACHE_HOST"
+	jvmArg "-Dvrc.mongodb.host=$System.env.GRADLE_MONGODB_HOST"
+}
+```
 
 #### Rode a APP
 
