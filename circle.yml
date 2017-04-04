@@ -1,0 +1,15 @@
+machine:
+  java:
+    version: openjdk8
+
+dependencies:
+    - ./gradlew build
+  cache_directories:
+      - "~/.m2/"
+      - "~/.ivy2/"
+      - "~/.sbt/"
+      - "~/.gradle/"
+
+test:
+  override:
+    - ./gradlew jacocoTestReport coveralls
