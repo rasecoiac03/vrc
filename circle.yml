@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   override:
-    - ./gradlew build
+      - ./gradlew clean war
   cache_directories:
       - "~/.m2/"
       - "~/.ivy2/"
@@ -13,4 +13,4 @@ dependencies:
 
 test:
   override:
-    - ./gradlew jacocoTestReport coveralls
+      - ./gradlew jacocoTestReport coveralls
