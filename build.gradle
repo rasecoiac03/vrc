@@ -5,6 +5,7 @@ buildscript {
 
   dependencies {
     classpath 'ru.shadam.gretty:gretty:+'
+    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1'
   }
 }
 
