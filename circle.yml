@@ -7,10 +7,8 @@ dependencies:
       - ./gradlew clean war
   cache_directories:
       - "~/.m2/"
-      - "~/.ivy2/"
-      - "~/.sbt/"
       - "~/.gradle/"
 
 test:
   override:
-      - ./gradlew jacocoTestReport coveralls
+      - ./gradlew test jacocoTestReport coveralls
