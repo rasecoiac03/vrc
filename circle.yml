@@ -3,6 +3,7 @@ machine:
     version: openjdk8
 
 dependencies:
+  override:
     - ./gradlew build
   cache_directories:
       - "~/.m2/"
