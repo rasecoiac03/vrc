@@ -5,6 +5,5 @@ build/
 .settings/
 .project
 *.class
-*.jar
 *.war
 *.ear
