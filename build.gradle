@@ -13,7 +13,7 @@ plugins {
 	id 'java'
 	id 'war'
 	id 'eclipse'
-	id 'jacoco'
+	//id 'jacoco'
 	id 'com.github.kt3k.coveralls' version '2.8.1'
 }
 
@@ -68,24 +68,24 @@ dependencies {
 	compile 'org.mongodb:mongo-java-driver:3.3.0'
 }
 
-test {
-	jacoco {
-		excludes += ['**/FileRepositoryUtil.class',
-			'**/Redis.class',
-			'**/domain/*.class',
-			'**/exception/*.class',
-			'**/module/*.class']
-	}
-}
+//test {
+//	jacoco {
+//		excludes += ['**/FileRepositoryUtil.class',
+//			'**/Redis.class',
+//			'**/domain/*.class',
+//			'**/exception/*.class',
+//			'**/module/*.class']
+//	}
+//}
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        csv.enabled false
-	html.enabled = true
-        html.destination "${buildDir}/jacocoHtml"
-    }
-}
+//jacocoTestReport {
+//    reports {
+//        xml.enabled true
+//        csv.enabled false
+//	html.enabled = true
+//        html.destination "${buildDir}/jacocoHtml"
+//    }
+//}
 
 gretty {
 	port = 9000
