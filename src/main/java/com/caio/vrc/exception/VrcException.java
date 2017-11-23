@@ -7,8 +7,8 @@ public class VrcException extends RuntimeException {
 	private final int statusCode;
 	private final String message;
 
-	public VrcException(String message) {
-		this(null, 0, message);
+	public VrcException(int statusCode, String message) {
+		this(null, statusCode, message);
 	}
 
 	public VrcException(Throwable e) {
